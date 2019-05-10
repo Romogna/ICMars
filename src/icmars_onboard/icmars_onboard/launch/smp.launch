@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- this is the launch file for the smp rovers 
+-->
+<launch>
+
+  <arg name="name" default="smp"/>
+  <group ns="$(arg name)">
+    <param name="robot_description"
+      command="$(find xacro)/xacro --inorder '$(find icmars_sim)/urdf/smp.xacro'" />
+    <param name="tf_prefix" value="$(arg name)" />
+  <node pkg="robot_state_publisher" 
+		type="robot_state_publisher" name="state_pub" />
+		<!-- for sim, we have to remap the images from the gazebo cmaeras -->
+		<node name="cmd_node" pkg="icmars_onboard" type="cmd_node" output="screen">
+		</node>
+		<node name="image_node" pkg="icmars_onboard" type="image_node" 
+        output="screen">
+			<remap from="/chest_camera_image" to="chest_camera/image/compressed"/>
+			<remap from="/caboose_camera_image" to="caboose_camera/image/compressed"/>
+			<remap from="/grip_camera_image" to="grip_camera/image/compressed"/>
+			<remap from="/nav_camera_image" to="nav_camera/image/compressed"/>
+			<remap from="/tag_camera_image" to="tag_detections_image/compressed"/>
+			<remap from="/belly_camera_image" to="belly_camera/image/compressed"/>
+		</node>
+		<node name="drive_node" pkg="icmars_onboard" type="drive_node" 
+      output="screen"/>
+<!--
+		<node name="pickup_node" pkg="icmars_onboard" type="pickup_node" 
+      output="screen"/>
+-->
+	<include file="$(find icmars_onboard)/launch/apriltags.launch">
+  	<arg name="name" value="$(arg name)"/>
+	</include>
+<!--
+		<node name="exec_node" pkg="icmars_onboard" type="exec_node" output="screen"/>
+-->
+  </group>
+</launch>	

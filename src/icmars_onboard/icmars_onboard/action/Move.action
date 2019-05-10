@@ -1,0 +1,6 @@
+# the goal
+geometry_msgs/Pose2D goal
+---
+string message
+---
+float32 distance_to_goal

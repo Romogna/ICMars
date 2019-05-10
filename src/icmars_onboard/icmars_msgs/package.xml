@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>icmars_msgs</name>
+  <version>0.0.0</version>
+  <description>The icmars_msgs package</description>
+
+  <maintainer email="jonathan.west@bie.edu">J West</maintainer>
+
+  <license>TODO</license>
+
+  <url type="website">http://www.sipi-i-c-mars.org</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+
+</package>

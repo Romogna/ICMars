@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="name" default="test"/>
+  <node pkg="apriltags_ros" type="apriltag_detector_node" name="apritags">
+      <remap from="image_rect" to="grip_camera/image" />
+      <remap from="camera_info" to="camera_info" />
+      <param name="image_transport" type="str" value="theora" />
+      <param name="tag_family" type="str" value="36h11" />
+      <param name="sensor_frame_id" type="str" 
+        value="grip_camera_link" />
+      <rosparam param="tag_descriptions" subst_value="true">[
+        {id: 0, size: 0.038, frame_id: $(arg name)/tag_0},
+        {id: 256, size: 0.038, frame_id: $(arg name)/tag_256}
+      ]</rosparam>
+  </node>
+</launch>
