@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="namer" value="$(env HOSTNAME)"/>
+
+  <group ns="$(arg namer)">
+
+    <node pkg="marvelmind_nav" name="hedge_rcv_bin" type="hedge_rcv_bin" args="/dev/ttyACM1">  
+      <remap from="/hedge_imu_raw" to="/$(arg namer)/hedge_imu_raw"/>
+      <remap from="/hedge_pos_ang" to="/$(arg namer)/hedge_pos_ang"/>
+
+    </node>
+    <node pkg="marvelmind_nav" name="pose_node" type="pose_node"/>
+    
+  </group>
+
+</launch>
