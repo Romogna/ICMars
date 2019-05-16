@@ -6,23 +6,24 @@
   <arg name="name" default="$(env HOSTNAME)"/>
   <group ns="$(arg name)">
     <param name="tf_prefix" value="$(arg name)" />
-		<!-- for sim, we have to remap the images from the gazebo cmaeras -->
+
+		<!-- for sim, we have to remap the images from the gazebo cmaeras
 		<node name="cmd_node" pkg="icmars_onboard" type="cmd_node" output="screen">
 			<remap from="/front_camera_image" to="front_camera/image/compressed"/>
 			<remap from="/rear_camera_image" to="rear_camera/image/compressed"/>
 			<remap from="/grip_camera_image" to="grip_camera/image/compressed"/>
 			<remap from="/tag_camera_image" to="tag_detections_image/compressed"/>
 		</node>
+-->
 		<node name="drive_node" pkg="icmars_onboard" type="drive_node" output="screen"/>
 		<node name="rr_motor_control_node" pkg="icmars_onboard" type="rr_motor_control_node" output="screen"/>
+
 	<include file="$(find icmars_onboard)/launch/apriltags.launch">
-	<arg name="name" value="$(arg name)"/>
+          <arg name="name" value="$(arg name)"/>
 	</include>
-
         <include file="$(find marvelmind_nav)/launch/node.launch" />
+        <include file="$(find usb_cam)/launch/usb_cam.launch" />
 
-<!--        <include file="$(find usb_cam)/launch/usb_cam.launch" />
--->
   </group>
 
       <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
@@ -30,7 +31,7 @@
       </node>
 
       <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" >
-      <arg name="port" value="8090"/>
+        <arg name="port" value="8090"/>
       </include>
 
 </launch>	

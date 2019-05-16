@@ -1,5 +1,5 @@
 <launch>
-<!-- tag_cam -->
+<!-- tag_cam
   <node name="tag_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
     <param name="video_device" value="/dev/video0" />
     <param name="image_width" value="320" />
@@ -10,18 +10,18 @@
     <param name="framerate" value="15"/>
 
   </node>
-<!--
+-->
   <node name="front_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
     <param name="video_device" value="/dev/video0" />
-
-    <param name="image_width" value="640" />
-    <param name="image_height" value="480" />
+    <param name="image_width" value="320" />
+    <param name="image_height" value="240" />
     <param name="pixel_format" value="yuyv" />
     <param name="camera_frame_id" value="usb_cam" />
     <param name="io_method" value="mmap"/>
-    <param name="framerate" value="15"/>
+    <param name="framerate" value="5"/>
 
   </node>
+<!--
 
   <node name="rear_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
     <param name="video_device" value="/dev/video2" />

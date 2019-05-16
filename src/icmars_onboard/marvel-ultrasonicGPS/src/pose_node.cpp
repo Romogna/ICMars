@@ -11,10 +11,10 @@ ros::Publisher pose_pub;
 geometry_msgs::Pose2D pose;
 
 int hedge = 0;
-double x_min = -744;
-double x_max = 172;
-double y_min = -855;
-double y_max = 13;
+double x_min = -458;
+double x_max = 538;
+double y_min = -694;
+double y_max = 490;
 bool calibrate = false;
 
 
@@ -23,7 +23,7 @@ void Callback(const marvelmind_nav::hedge_pos_ang::ConstPtr& msg)
 //  ROS_INFO_STREAM(" Pose = "<< msg->x_m << ","<< msg->y_m<<","<< msg->z_m<<")");
   hedge = msg->address;
 
-  if(hedge == 11 ){
+  if(hedge == 10 ){
     pose.x = msg->x_m;
     pose.y = msg->y_m;
   }
@@ -35,13 +35,13 @@ void Callback2(const marvelmind_nav::hedge_imu_raw::ConstPtr& msg)
 
   pose_pub.publish(pose);
 
-  float x_mean = (x_max+x_min)/2.0;
-  float y_mean = (y_max+y_min)/2.0;
-  float x_range = x_max-x_min;
-  float y_range = y_max-y_min;
+  double x_mean = (x_max+x_min)/2.0;
+  double y_mean = (y_max+y_min)/2.0;
+  double x_range = x_max-x_min;
+  double y_range = y_max-y_min;
 // change x_cal to negative to flip oreintation of rover to read positive theta in ccw direction and negative for cw direction.
-  float x_cal = (msg->compass_x-x_mean)/(x_range/2.0);
-  float y_cal = -(msg->compass_y-y_mean)/(y_range/2.0);
+  double x_cal = (msg->compass_x-x_mean)/(x_range/2.0);
+  double y_cal = -(msg->compass_y-y_mean)/(y_range/2.0);
 
 // added to offset theta by -90 degrees to align rover with x-axis
 //  float modTheta = y_cal/x_cal;
