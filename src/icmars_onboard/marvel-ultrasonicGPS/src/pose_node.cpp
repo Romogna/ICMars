@@ -33,7 +33,7 @@ void Callback2(const marvelmind_nav::hedge_imu_raw::ConstPtr& msg)
 {
 //  ROS_INFO_STREAM("compass = "<<msg->compass_x << ","<<msg->compass_y << ","<<msg->compass_z<<")");
 
-  pose_pub.publish(pose);
+//  pose_pub.publish(pose);
 
   double x_mean = (x_max+x_min)/2.0;
   double y_mean = (y_max+y_min)/2.0;
@@ -63,12 +63,12 @@ void Callback2(const marvelmind_nav::hedge_imu_raw::ConstPtr& msg)
   }
 }
 
-
 void CalCallback(const std_msgs::Bool::ConstPtr& msg)
 {
   calibrate = msg->data;
 
 }
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "pose_node");
@@ -78,9 +78,20 @@ int main(int argc, char **argv)
   ros::Subscriber sub = n.subscribe("hedge_pos_ang", 100, Callback);
   ros::Subscriber sub2 = n.subscribe("hedge_imu_raw", 100, Callback2);
   ros::Subscriber cal = n.subscribe("calibrate", 1, CalCallback);
-  pose_pub = n.advertise<geometry_msgs::Pose2D>("pose", 1000);
 
-  ros::spin();
+  pose_pub = n.advertise<geometry_msgs::Pose2D>("pose", 100);
+
+  ros::Rate rateControl(10);
+
+  while(ros::ok())
+  {
+
+    pose_pub.publish(pose);
+
+    ros::spinOnce();
+
+    rateControl.sleep();
+  }
 
   return 0;
 }
