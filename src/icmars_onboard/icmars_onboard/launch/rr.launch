@@ -7,14 +7,13 @@
   <group ns="$(arg name)">
     <param name="tf_prefix" value="$(arg name)" />
 
-		<!-- for sim, we have to remap the images from the gazebo cmaeras
+		<!-- for sim, we have to remap the images from the gazebo cameras -->
 		<node name="cmd_node" pkg="icmars_onboard" type="cmd_node" output="screen">
 			<remap from="/front_camera_image" to="front_camera/image/compressed"/>
 			<remap from="/rear_camera_image" to="rear_camera/image/compressed"/>
 			<remap from="/grip_camera_image" to="grip_camera/image/compressed"/>
 			<remap from="/tag_camera_image" to="tag_detections_image/compressed"/>
 		</node>
--->
 		<node name="drive_node" pkg="icmars_onboard" type="drive_node" output="screen"/>
 		<node name="rr_motor_control_node" pkg="icmars_onboard" type="rr_motor_control_node" output="screen"/>
 
