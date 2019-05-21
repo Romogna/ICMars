@@ -3,8 +3,10 @@
 
 <p>All code has been developed using ROS Kinetic</p>
 
-<h3>The following drivers are needed to use code:</h3>
 <hr>
+
+<h3>The following drivers are needed to use code:</h3>
+
 <p>ROS drivers to use usb camera</p>
 <pre>sudo apt install ros-kinetic-usb-cam</pre>
 
@@ -23,6 +25,10 @@
 <p>ROS drivers to connect to Arduino using rosserial</p>
 <pre>sudo apt install ros-kinetic-rosserial-arduino</pre>
 
+<hr>
 
+<h3>If ROS Desktop was installed, not ROS Desktop full, the following will also need to be installed</h3>
 
+<pre>sudo apt install ros-kinetic-camera-info-manager</pre>
 
+<pre>sudo apt install ros-kinetic-image-view</pre>
