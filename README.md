@@ -1,7 +1,9 @@
 # ICMars
-Basic code for our rovers projects
+<p>Basic code for SIPI rover projects</p>
 
-Requires the following:
+<p>All code has been developed using ROS Kinetic</p>
+
+<p>Requires the following drivers:</p>
 
 <pre>sudo apt install ros-kinetic-marvelmind-nav</pre>
 
