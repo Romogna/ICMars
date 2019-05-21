@@ -4,7 +4,7 @@
 <p>All code has been developed using ROS Kinetic</p>
 
 <p>Requires the following drivers:</p>
-
+<hr>
 <p>ROS drivers to use usb camera</p>
 <pre>sudo apt install ros-kinetic-usb-cam</pre>
 
