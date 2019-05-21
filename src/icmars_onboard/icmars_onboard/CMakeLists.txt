@@ -110,7 +110,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES icmars_onboard
-   CATKIN_DEPENDS icmars_msgs roscpp rospy std_msgs message_runtime
+   CATKIN_DEPENDS icmars_msgs roscpp rospy std_msgs message_runtime actionlib_msgs
 #  DEPENDS system_lib
 )
 
