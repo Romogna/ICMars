@@ -11,7 +11,7 @@ Requires the following:
 
 <pre>sudo apt install ros-kinetic-rosserial</pre>
 
-<pre>sudo apt-get install ros-kinetic-rosserial-arduino</pre>
+<pre>sudo apt install ros-kinetic-rosserial-arduino</pre>
 
 
 
