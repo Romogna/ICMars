@@ -48,8 +48,8 @@
    The C270 camera was replced with a logitech C310 camera that also experienced similar problems as the first camera used.
    This time, the camera would stop working with the third run of the this code, instead of the second.
 </p>
-<h5>Recommended Cameras that have tested</h5>
+<h5>Recommended Cameras that have been tested in this project</h5>
 <ul>
-   <li>Logitech c170 web camera</li>
+   <li>Logitech C170 web camera</li>
    <li>Logitech C920 web camera</li>
 </ul>
