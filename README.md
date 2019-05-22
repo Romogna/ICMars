@@ -29,6 +29,11 @@
 
 <h3>If ROS Desktop was installed, not ROS Desktop full, the following will also need to be installed</h3>
 
+<p></p>
 <pre>sudo apt install ros-kinetic-camera-info-manager</pre>
 
+<p></p>
+<pre>sudo apt install ros-kinetic-theora-image-transport</pre>
+
+<p></p>
 <pre>sudo apt install ros-kinetic-image-view</pre>
