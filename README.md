@@ -37,3 +37,15 @@
 
 <p></p>
 <pre>sudo apt install ros-kinetic-image-view</pre>
+
+<hr>
+
+<h3>Hardware Problems</h3>
+<p>During testing, the Logitech C270 usb camera appeared to work fine with the first test.
+   But, the camera crashed when the code was ran a second time.
+   The usb camera had to unplugged and plugged back in order for it to work again.
+   But, the camera would again crash when running the code a second time.
+   The C270 camera was replced with a logitech C310 camera that also experienced similar problems as the first camera used.
+   This time, the camera would stop working with the third run of the this code, instead of the second.
+   The cameras that have been tested and work are the Logitech c170 and Logitech C920.
+</p>
