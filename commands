@@ -1,2 +1,3 @@
-rostopic pub -1 /walle/cmd std_msgs/String "'{\"cmd\":\"goto\",\"timeout\":18,\"time\":14,\"pose\":{\"x\":1.0,\"y\":-1.0,\"theta\":0}}'"
+rostopic pub -1 /rover/cmd std_msgs/String "'{\"cmd\":\"goto\",\"timeout\":18,\"time\":14,\"pose\":{\"x\":0.0,\"y\":0.0,\"theta\":0}}'"
 
+rostopic pub -1 /rover/cmd std_msgs/String "'{\"cmd\":\"stop\"}'"
