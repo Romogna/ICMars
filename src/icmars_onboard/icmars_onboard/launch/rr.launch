@@ -3,9 +3,12 @@
 -->
 <launch>
 
-  <arg name="name" default="$(env HOSTNAME)"/>
-  <group ns="$(arg name)">
-    <param name="tf_prefix" value="$(arg name)" />
+  <arg name="host" default="$(env HOSTNAME)"/>
+  <arg name="arduino" default="$(env ARDUINO_PORT)"/>
+
+
+  <group ns="$(arg host)">
+    <param name="tf_prefix" value="$(arg host)" />
 
 		<!-- for sim, we have to remap the images from the gazebo cameras -->
 		<node name="cmd_node" pkg="icmars_onboard" type="cmd_node" output="screen">
@@ -18,7 +21,7 @@
 		<node name="rr_motor_control_node" pkg="icmars_onboard" type="rr_motor_control_node" output="screen"/>
 
 	<include file="$(find icmars_onboard)/launch/apriltags.launch">
-          <arg name="name" value="$(arg name)"/>
+          <arg name="name" value="$(arg host)"/>
 	</include>
         <include file="$(find marvelmind_nav)/launch/node.launch" />
         <include file="$(find usb_cam)/launch/usb_cam.launch" />
@@ -26,7 +29,8 @@
   </group>
 
       <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
-        <param name="port" value="/dev/ttyACM0"/>
+        <param name="port" value="$(arg arduino)"/>
+        <param name="baud" value="57600"/>
       </node>
 
       <node pkg="web_video_server" type="web_video_server" name="web_video_server">
