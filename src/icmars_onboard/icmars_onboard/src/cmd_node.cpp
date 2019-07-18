@@ -208,7 +208,7 @@ void Cmd::parseCommand(std::string json_str) {
   if(d.HasParseError()) {
     ROS_ERROR_STREAM("JSON string could not be parsed: " << json_str);
     return;
-  }
+}
 
   // All commands must have a "cmd" field
   std::string cmd;
@@ -246,7 +246,7 @@ void Cmd::parseCommand(std::string json_str) {
     g.goal = pose;
     ac.sendGoal(g);
     next_state = States::DRIVING;
-
+//
   } else if(cmd == "move") {
     std::string direction;
 
@@ -290,17 +290,11 @@ void Cmd::parseCommand(std::string json_str) {
 
       twist_pub.publish(twistMsg);
       next_state = States::MOVING;
-
-  } else if(cmd == "stop") {
-    for(int i = cmd_queue.size(); i == 0; i--) {
-      cmd_queue.pop();
-    }
-    if(cmd_queue.empty()) {
-      std_msgs::String Msg;
-      Msg.data = "CLEAR";
-      drive_control_pub.publish(Msg);
-      next_state = States::IDLE;
-    }
+//
+} else if(cmd == "stop") {
+    std_msgs::String Msg;
+    Msg.data = "CLEAR";
+    drive_control_pub.publish(Msg);
   } else if(cmd == "gripper") {
     if(d.HasMember("finger")) {
       std_msgs::Float32 m;

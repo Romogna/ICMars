@@ -129,8 +129,9 @@ void poseCallback(const geometry_msgs::Pose2D::ConstPtr &msg)
     cmd_pub.publish(move_twist);
     goal = pose;
   } else {
-    pid();
+    
     if(ActionBusy) {
+      pid();
       ss << "DRIVING: goal=("<< std::setprecision(1) << goal.x<<","<<goal.y<<","<<goal.theta<<")";
     } else {
       ss << "HOLDING: goal=("<< std::setprecision(1) <<goal.x<<","<<goal.y<<","<<goal.theta<<")";
