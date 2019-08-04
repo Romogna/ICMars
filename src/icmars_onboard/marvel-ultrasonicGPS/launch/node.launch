@@ -2,10 +2,11 @@
 
 <launch>
 
-    <node pkg="marvelmind_nav" name="hedge_rcv_bin" type="hedge_rcv_bin" args="/dev/ttyACM1">  
-    </node>
+  <arg name="marvel" default="$(env MARVEL_PORT)"/>
 
-    <node pkg="marvelmind_nav" name="pose_node" type="pose_node"/>
+  <node pkg="marvelmind_nav" name="hedge_rcv_bin" type="hedge_rcv_bin" args="$(arg marvel)"/>  
+
+  <node pkg="marvelmind_nav" name="pose_node" type="pose_node"/>
     
 
 </launch>
